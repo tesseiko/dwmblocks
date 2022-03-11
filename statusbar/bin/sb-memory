@@ -1,5 +1,8 @@
 #!/bin/sh
 
+[ ! -d $XDG_DATA_HOME/sys_res-status ] && mkdir -p $XDG_DATA_HOME/sys_res-status 
+[ ! -f $XDG_DATA_HOME/sys_res-status/show ] && echo 0 > $XDG_DATA_HOME/sys_res-status/show 
+
 toggle() {
 	if [ $(cat $XDG_DATA_HOME/sys_res-status/show) == "1" ]; then
 		echo 0 > $XDG_DATA_HOME/sys_res-status/show
