@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mode=`realpath $HOME/.local/bin/dwmmode | cut -d/ -f8 `
+echo "[$mode]"

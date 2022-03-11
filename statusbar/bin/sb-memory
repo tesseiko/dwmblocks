@@ -1,0 +1,27 @@
+#!/bin/sh
+
+toggle() {
+	if [ $(cat $XDG_DATA_HOME/sys_res-status/show) == "1" ]; then
+		echo 0 > $XDG_DATA_HOME/sys_res-status/show
+		kill -52 $(pidof dwmblocks)
+	else
+		kill -52 $(pidof dwmblocks)
+		echo 1 > $XDG_DATA_HOME/sys_res-status/show
+	fi
+}
+
+case $BLOCK_BUTTON in
+	1) toggle ;;
+	2) notify-send "🧠 Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
+	2) setsid -f "$TERMINAL" -e htop ;;
+	3) notify-send "🧠 Memory module" "\- Shows Memory Used/Total.
+- Click to show memory hogs.
+- Middle click to open htop." ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+if [ $(cat $XDG_DATA_HOME/sys_res-status/show) == "1" ]; then
+	free --mebi | sed -n '2{p;q}' | awk '{printf ("[%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'
+else
+	echo [
+fi

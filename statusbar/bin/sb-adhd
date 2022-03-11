@@ -1,0 +1,13 @@
+#!/bin/sh
+
+tasks_file=$XDG_DATA_HOME/adhd/tasks
+msg=$(sed -z 's/\n/🚦/g' $tasks_file)
+
+case $BLOCK_BUTTON in
+	1) notify-send "Tasks" "$(cat $tasks_file)" ;;
+	2) delete-task ;;
+	3) echo | dmenu -p "Enter new task" | xargs add-task ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+echo 🔥$msg 🔥
