@@ -4,10 +4,12 @@ ifndef SUDO_USER
 $(info running as user)
 
 INSTALL_DIR ?= $(HOME)/.local/bin/statusbar
+_USER=$USER
 
 else
 $(info running as root)
 INSTALL_DIR ?= /home/$(SUDO_USER)/.local/bin/statusbar
+_USER=$SUDO_USER
 endif
 
 TOOLNAMES := $(shell ls ./bin)
@@ -22,6 +24,7 @@ tools: $(INSTALL_BINS)
 
 $(INSTALL_DIR)%: bin% | $(INSTALL_DIR)
 	cp $^ $@
+	chown -R $(_USER):$(_USER) $@
 
 
 $(INSTALL_DIR):
