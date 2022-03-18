@@ -4,12 +4,12 @@ ifndef SUDO_USER
 $(info running as user)
 
 INSTALL_DIR ?= $(HOME)/.local/bin/statusbar
-_USER=$USER
+_USER?=$(USER)
 
 else
 $(info running as root)
 INSTALL_DIR ?= /home/$(SUDO_USER)/.local/bin/statusbar
-_USER=$SUDO_USER
+_USER?=$(SUDO_USER)
 endif
 
 TOOLNAMES := $(shell ls ./bin)
