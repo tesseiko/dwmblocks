@@ -24,7 +24,9 @@ case $BLOCK_BUTTON in
 esac
 
 if [ $(cat $XDG_DATA_HOME/sys_res-status/show) == "1" ]; then
-	free --mebi | sed -n '2{p;q}' | awk '{printf ("[%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'
+    skata=$(free --mebi | sed -n '2{p;q}' | awk '{printf ("[%2.2fGiB/%2.2fGiB", ( $3 / 1024), ($2 / 1024))}')
+    poutses=$(radeontop -l 1 -d - |grep gpu | awk '{printf( "%2.2f%% %2.2fMb \n", $33, $34)}')
+    echo $skata $poutses
 else
 	echo [
 fi
