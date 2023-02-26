@@ -4,15 +4,15 @@ static const Block blocks[] = {
 	/* {"⌨", "sb-kbselect", 0, 30}, */
 	{"", "cat /tmp/recordingicon 2>/dev/null",	0,	9},
 	{"",	"sb-tasks",					10,	26},
+    {"",	"sb-music",					0,	11},
 	{"",	"sb-mode",					0,	27},
 	{"",	"sb-clock",					60,	1},
-	{"",	"sb-music",					0,	11},
 	// {"",	"sb-adhd",		0,	6},
 	// {"",	"sb-pacpackages",		0,	8},
 	// {"",	"sb-torrent",		20,	7},
-	{"",	"sb-volume",				0,	10},
-	{"",	"sb-memory",				10,	14},
-	{"",	"sb-cpubars",				10,	18},
+	// {"",	"sb-volume",				0,	10},
+	// {"",	"sb-memory",				10,	14},
+	// {"",	"sb-cpubars",				10,	18},
 /* 	{"",	"sb-nettraf",				1,	16}, */
 	/* {"",	"sb-battery",				5,	3}, */
 	/* {"",	"sb-internet",				5,	4}, */
